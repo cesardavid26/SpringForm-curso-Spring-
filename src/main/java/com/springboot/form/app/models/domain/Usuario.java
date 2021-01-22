@@ -2,19 +2,12 @@ package com.springboot.form.app.models.domain;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 public class Usuario {
 	
-	
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
+	@Pattern(regexp = "[0-9]{2}[.,][\\d]{3}[.,][\\d]{3}[-][A-Z]{1}")
 	private String id;
 	
 	@NotEmpty(message = "el nombre no puede ser vacio")
@@ -34,6 +27,15 @@ public class Usuario {
 	@Email(message = "correo con formato incorrecto")
 	public String email;
 
+	
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+	
 	public String getUsername() {
 		return username;
 	}
