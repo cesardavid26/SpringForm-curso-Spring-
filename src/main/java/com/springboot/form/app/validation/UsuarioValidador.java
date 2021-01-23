@@ -20,7 +20,7 @@ public class UsuarioValidador implements Validator{
 	public void validate(Object target, Errors errors) {
 		Usuario usuario = (Usuario)target;
 		
-		ValidationUtils.rejectIfEmpty(errors, "nombre", "NotEmpty.usuario.nombre");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nombre", "requerido.usuario.nombre");
 		
 		if(!usuario.getId().matches("[0-9]{2}[.][\\d]{3}[.][\\d]{3}[-][A-Z]{1}") ) {
 			errors.rejectValue("id", "pattern.usuario.id");
