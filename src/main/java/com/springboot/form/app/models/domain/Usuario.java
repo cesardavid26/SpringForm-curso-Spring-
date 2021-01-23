@@ -1,9 +1,11 @@
 package com.springboot.form.app.models.domain;
 
 import javax.validation.constraints.Email;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
-
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.springboot.form.app.validation.IdentificadorRegex;
@@ -32,6 +34,11 @@ public class Usuario {
 	@Requerido
 	@Email(message = "correo con formato incorrecto")
 	public String email;
+	
+	@NotNull
+	@Min(5)
+	@Max(5000)
+	private Integer cuenta;
 
 	
 	public String getId() {
@@ -80,6 +87,15 @@ public class Usuario {
 
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
+	}
+
+	
+	public Integer getCuenta() {
+		return cuenta;
+	}
+
+	public void setCuenta(Integer cuenta) {
+		this.cuenta = cuenta;
 	}
 	
 	
