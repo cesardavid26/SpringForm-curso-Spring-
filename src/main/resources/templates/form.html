@@ -17,6 +17,17 @@
 			<div th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></div>
 		</div>
 	
+	<div>
+			<label for="pais">Pais</label>
+			<div>
+				<select id="pais" th:field="*{pais}">
+				<option value="">Seleccione: </option>
+				<option th:each="pais: ${paises}" th:text="${pais}" th:value="${pais}"></option>
+				
+				</select>
+			</div>
+			<div th:if="${#fields.hasErrors('pais')}" th:errors="*{pais}"></div>
+		</div>
 
 		<div>
 			<label for="nombre">Nombre</label>
