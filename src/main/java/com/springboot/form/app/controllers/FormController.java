@@ -16,6 +16,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.validation.Valid;
+
+import com.springboot.form.app.editors.NombreMayusculaEditor;
 import com.springboot.form.app.models.domain.Usuario;
 import com.springboot.form.app.validation.UsuarioValidador;
 
@@ -32,12 +34,15 @@ public class FormController {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		dateFormat.setLenient(false);
 		binder.registerCustomEditor(Date.class, "fechaNacimiento", new CustomDateEditor(dateFormat, false));
+		
+		binder.registerCustomEditor(String.class, "nombre", new NombreMayusculaEditor());
+		binder.registerCustomEditor(String.class, "apellido", new NombreMayusculaEditor());
 	}
 
 	@GetMapping("/form")
 	public String form(Model model) {
 		Usuario usuario = new Usuario();
-		usuario.setId("1090");
+		usuario.setId("10.905.107-P");
 		usuario.setNombre("cesar");
 		usuario.setApellido("carvajal");
 		model.addAttribute("titulo", "Formulario de usuarios");
