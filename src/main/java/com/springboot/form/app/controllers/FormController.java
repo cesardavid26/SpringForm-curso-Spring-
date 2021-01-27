@@ -23,6 +23,7 @@ import java.util.Map;
 import javax.validation.Valid;
 
 import com.springboot.form.app.editors.NombreMayusculaEditor;
+import com.springboot.form.app.models.domain.Pais;
 import com.springboot.form.app.models.domain.Usuario;
 import com.springboot.form.app.validation.UsuarioValidador;
 
@@ -44,9 +45,21 @@ public class FormController {
 		binder.registerCustomEditor(String.class, "apellido", new NombreMayusculaEditor());
 	}
 	
-	@ModelAttribute("paises")
+	@ModelAttribute("listaPaises")
 	public List<String> paises(){
 		return Arrays.asList("España", "Argentina", "Colombia", "Mexico", "Chile", "Peru", "Venezuela");
+	}
+	
+	@ModelAttribute("listaPaises")
+	public List<Pais> listaPaises(){
+		return Arrays.asList(
+				new Pais(1, "ES", "España"), 
+				new Pais(2, "AR", "Argentina"), 
+				new Pais(3, "CO", "Colombia"), 
+				new Pais(4, "MX", "Mexico"), 
+				new Pais(5, "CL", "Chile"), 
+				new Pais(6, "PE", "Peru"), 
+				new Pais(7, "VE", "Venezuela"));
 	}
 	
 	@ModelAttribute("paisesMap")
