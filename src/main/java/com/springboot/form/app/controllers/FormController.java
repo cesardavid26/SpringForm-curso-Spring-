@@ -16,7 +16,9 @@ import org.springframework.web.bind.support.SessionStatus;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.validation.Valid;
 
@@ -44,7 +46,22 @@ public class FormController {
 	
 	@ModelAttribute("paises")
 	public List<String> paises(){
-		return Arrays.asList("España", "Colombia", "Mexico", "Chile", "Peru", "Venezuela");
+		return Arrays.asList("España", "Argentina", "Colombia", "Mexico", "Chile", "Peru", "Venezuela");
+	}
+	
+	@ModelAttribute("paisesMap")
+	public Map<String, String> paisesMap(){
+		Map<String, String> paises = new HashMap<String, String>();
+		
+		paises.put("ES", "España");
+		paises.put("MX", "Mexico");
+		paises.put("CO", "Colombia");
+		paises.put("CL", "Chile");
+		paises.put("AR", "Argentina");
+		paises.put("PE", "Peru");
+		paises.put("VE", "Venezuela");
+		
+		return paises;
 	}
 
 	@GetMapping("/form")
