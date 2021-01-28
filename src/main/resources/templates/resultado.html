@@ -8,7 +8,7 @@
 	<h3 th:text="${titulo}"></h3>
 
 	<ul>
-	
+
 		<li th:text="${usuario.nombre}"></li>
 		<li th:text="${usuario.apellido}"></li>
 		<li th:text="${usuario.username}"></li>
@@ -20,9 +20,11 @@
 		<li th:text="${usuario.pais.codigo}"></li>
 		<li th:text="${usuario.pais.nombre}"></li>
 		<li th:text="${#calendars.format(usuario.fechaNacimiento, 'dd-MM-yyyy')}"></li>
-		
-		
-	</ul>
 
+	</ul>
+	<div>Roles</div>
+	<ul>
+		<li th:each="role: ${usuario.roles}" th:text="${role}"></li>
+	</ul>
 </body>
 </html>
