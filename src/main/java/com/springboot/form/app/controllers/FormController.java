@@ -23,8 +23,10 @@ import java.util.Map;
 import javax.validation.Valid;
 
 import com.springboot.form.app.editors.NombreMayusculaEditor;
+import com.springboot.form.app.editors.PaisPropertyEditor;
 import com.springboot.form.app.models.domain.Pais;
 import com.springboot.form.app.models.domain.Usuario;
+import com.springboot.form.app.services.PaisService;
 import com.springboot.form.app.validation.UsuarioValidador;
 
 @Controller
@@ -33,6 +35,12 @@ public class FormController {
 	
 	@Autowired
 	private UsuarioValidador validador;
+	
+	@Autowired
+	private PaisService paisService;
+	
+	@Autowired
+	private PaisPropertyEditor paisEditor;
 	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
@@ -43,6 +51,8 @@ public class FormController {
 		
 		binder.registerCustomEditor(String.class, "nombre", new NombreMayusculaEditor());
 		binder.registerCustomEditor(String.class, "apellido", new NombreMayusculaEditor());
+		
+		binder.registerCustomEditor(Pais.class, "pais", paisEditor);
 	}
 	
 	@ModelAttribute("listaPaises")
@@ -52,14 +62,7 @@ public class FormController {
 	
 	@ModelAttribute("listaPaises")
 	public List<Pais> listaPaises(){
-		return Arrays.asList(
-				new Pais(1, "ES", "España"), 
-				new Pais(2, "AR", "Argentina"), 
-				new Pais(3, "CO", "Colombia"), 
-				new Pais(4, "MX", "Mexico"), 
-				new Pais(5, "CL", "Chile"), 
-				new Pais(6, "PE", "Peru"), 
-				new Pais(7, "VE", "Venezuela"));
+		return paisService.listar();
 	}
 	
 	@ModelAttribute("paisesMap")
