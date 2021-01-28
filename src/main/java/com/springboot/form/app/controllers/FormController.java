@@ -76,6 +76,18 @@ public class FormController {
 		return roles;
 	}
 	
+	@ModelAttribute("listaRolesMap")
+	public Map<String, String> listaRolesMap(){
+		Map<String, String> roles = new HashMap<String, String>();
+		
+		roles.put("ROLE_ADMIN", "Administridor");
+		roles.put("ROLE_USER", "Usuario");
+		roles.put("ROLE_MODERATOR", "Moderador");
+		
+		
+		return roles;
+	}
+	
 	@ModelAttribute("paisesMap")
 	public Map<String, String> paisesMap(){
 		Map<String, String> paises = new HashMap<String, String>();
