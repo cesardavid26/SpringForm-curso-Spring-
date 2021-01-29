@@ -16,12 +16,12 @@
 			</div>
 
 		</div>
-		
+
 		<div>
-			<label >Genero</label>
-			
+			<label>Genero</label>
+
 			<div th:each="gene: ${genero}">
-				<input type="radio"  th:field="*{genero}" th:value="${gene}">
+				<input type="radio" th:field="*{genero}" th:value="${gene}">
 				<label th:for="${#ids.prev('genero')}" th:text="${gene}"></label>
 			</div>
 			<div th:if="${#fields.hasErrors('genero')}" th:errors="*{genero}"></div>
@@ -124,7 +124,7 @@
 				<input type="submit" value="Enviar">
 			</div>
 		</div>
-
+		<input type="hidden" th:field="*{valorSecreto}">
 	</form>
 </body>
 </html>
