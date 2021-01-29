@@ -59,6 +59,9 @@ public class Usuario {
 	private List<Rol> roles;
 	
 	
+
+	private Boolean habilitar;
+	
 	public String getId() {
 		return id;
 	}
@@ -142,7 +145,14 @@ public class Usuario {
 	
 	
 	
-	
+
+	public Boolean getHabilitar() {
+		return habilitar;
+	}
+
+	public void setHabilitar(Boolean habilitar) {
+		this.habilitar = habilitar;
+	}
 	
 
 }
