@@ -26,8 +26,10 @@ import javax.validation.Valid;
 import com.springboot.form.app.editors.NombreMayusculaEditor;
 import com.springboot.form.app.editors.PaisPropertyEditor;
 import com.springboot.form.app.models.domain.Pais;
+import com.springboot.form.app.models.domain.Rol;
 import com.springboot.form.app.models.domain.Usuario;
 import com.springboot.form.app.services.PaisService;
+import com.springboot.form.app.services.RoleService;
 import com.springboot.form.app.validation.UsuarioValidador;
 
 @Controller
@@ -39,6 +41,9 @@ public class FormController {
 	
 	@Autowired
 	private PaisService paisService;
+	
+	@Autowired
+	private RoleService roleService;
 	
 	@Autowired
 	private PaisPropertyEditor paisEditor;
@@ -54,6 +59,11 @@ public class FormController {
 		binder.registerCustomEditor(String.class, "apellido", new NombreMayusculaEditor());
 		
 		binder.registerCustomEditor(Pais.class, "pais", paisEditor);
+	}
+	
+	@ModelAttribute("listaRoles")
+	public List<Rol> listaRoles(){
+		return this.roleService.listar();
 	}
 	
 	@ModelAttribute("listaPaises")
@@ -82,7 +92,7 @@ public class FormController {
 		
 		roles.put("ROLE_ADMIN", "Administridor");
 		roles.put("ROLE_USER", "Usuario");
-		roles.put("ROLE_MODERATOR", "Moderador");
+		roles.put("ROLE_MODERATOR", "Moderador ");
 		
 		
 		return roles;

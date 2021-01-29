@@ -56,7 +56,7 @@ public class Usuario {
 	private Pais pais;
 	
 	@NotEmpty
-	private List<String> roles;
+	private List<Rol> roles;
 	
 	
 	public String getId() {
@@ -132,11 +132,11 @@ public class Usuario {
 		this.pais = pais;
 	}
 
-	public List<String> getRoles() {
+	public List<Rol> getRoles() {
 		return roles;
 	}
 
-	public void setRoles(List<String> roles) {
+	public void setRoles(List<Rol> roles) {
 		this.roles = roles;
 	}
 	
