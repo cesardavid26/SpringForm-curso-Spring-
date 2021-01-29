@@ -66,6 +66,11 @@ public class FormController {
 		binder.registerCustomEditor(Rol.class, "roles", rolEditor);
 	}
 	
+	@ModelAttribute("genero")
+	public List<String> genero(){
+		return Arrays.asList("Hombre", "Mujer");
+	}
+	
 	@ModelAttribute("listaRoles")
 	public List<Rol> listaRoles(){
 		return this.roleService.listar();
