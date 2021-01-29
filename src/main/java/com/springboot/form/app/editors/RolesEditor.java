@@ -2,13 +2,25 @@ package com.springboot.form.app.editors;
 
 import java.beans.PropertyEditorSupport;
 
-public class RolesEditor extends PropertyEditorSupport{
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.springboot.form.app.services.RoleService;
+
+@Component
+public class RolesEditor extends PropertyEditorSupport {
+
+	@Autowired
+	private RoleService service;
 
 	@Override
 	public void setAsText(String text) throws IllegalArgumentException {
-		// TODO Auto-generated method stub
-		super.setAsText(text);
+		try {
+			Integer id = Integer.parseInt(text);
+			setValue(service.obtenerPorId(id));
+		} catch (NumberFormatException e) {
+			setValue(null);
+		}
 	}
 
-	
 }
